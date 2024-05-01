@@ -87,12 +87,9 @@ for arquivo in os.listdir(pasta_espelhos):
         
 # Após a extração da informação de Remessa, ele verifica se esse valor está presente do data frame que contém as informações sobre a nota fiscal, caso esteja presente então ele salva o espelho de frete com o numero da nota fiscal correspondente em uma nova pasta    
         if remessa in df_notas["Remessa"].values:
-            n_nota_correspondente = df_notas.loc[df_notas["Remessa"] == remessa, "N_Nota"].iloc[0]
-            
-            novo_nome_arquivo = f"Espelho_{n_nota_correspondente}.pdf"
-            
+            n_nota_correspondente = df_notas.loc[df_notas["Remessa"] == remessa, "N_Nota"].iloc[0]         
+            novo_nome_arquivo = f"Espelho_{n_nota_correspondente}.pdf"           
             caminho_destino = os.path.join(pasta_destino, novo_nome_arquivo)
-            
             shutil.copy(caminho_espelho, caminho_destino)
                         
 print("Todos os arquivos foram copiados")
