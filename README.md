@@ -1,10 +1,15 @@
 ## Extrator de nfs e espelhos
 ### Pacotes e bibliotecas utilizadas
-- Pandas
-- shutil
-- os
-- PyPDF2
-- PdfReader
+- **Pandas:**
+  <sub>Utilizado para salvar as informações extraídas das notas fiscais em um DataFrame para depois fazer o tratamento dos espelhos de frete;</sub>
+- **shutil:**
+  <sub>Utilizado ao final do código para mover o arquivo do eseplho de frete para a nova pasta;</sub>
+- **os:**
+  <sub>Utilizado para acessar os arquivos dentro das pastas;</sub>
+- **PyPDF2:**
+  <sub>Utilizado para trabalhar com arquivos PDF;</sub>
+- **PdfReader:**
+  <sub>Utilizado para ler e extrair as informações dos arquivos PDF.</sub>
 
 ### Projeto
 
