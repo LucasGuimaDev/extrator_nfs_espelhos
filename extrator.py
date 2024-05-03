@@ -14,11 +14,17 @@ def extrair_texto_pdf(caminho_arquivo): #Funçãoo para extrair todo o texto con
     return texto
 
 def remessa_notas(arquivo): #Função para obter o número da remessa contido dentro do PDF da nota fiscal
-    remessa = arquivo[-7].split()[-5]
-    if remessa.isdigit(): #Verifica se o valor encontrado é um número, caso contrário ele retorna o numero 0
-        return remessa
-    else:
-        return 0
+    remessa = []
+    for i in arquivo:
+        if 'Remessa:' in i:
+            remessa = i.split()
+            remessa.append(remessa)
+    indice = remessa.index('Remessa:')
+    prox = remessa[indice+1] #Verifica se o valor encontrado é um número, caso contrário ele retorna o numero 0
+    return prox
+    
+        
+
     
 def remessa_espelhos(arquivo): #Função para obter o número da remessa contido dentro do PDF do espelho de frete 
     if len(arquivo) > 29:
@@ -40,7 +46,7 @@ def valor(arquivo): #Função para extrair o valor da nota fiscal para uma segun
     valor = float(valor.replace('.', '').replace(',', '.'))
     return valor
 
-pasta_notas = '''caminho para a sua pasta com as nota'''
+pasta_notas = '''caminho para pasta com as notas'''
 
 resultados_notas = []
 
@@ -63,10 +69,10 @@ df_notas = pd.DataFrame(resultados_notas)
 
 #print(df_notas)
 
-df_notas.to_csv('''caminho para salvar o arquivo em csv''', index=False)
+df_notas.to_csv('''caminho para salvar o arquivo csv''', index=False)
 
-pasta_espelhos = '''caminho da pasta com os espelhos de frete'''
-pasta_destino = '''camino para a pasta em que os espelhos serão salvos'''
+pasta_espelhos = '''caminho para a pasta com os espelhos de frete antes do tratamento'''
+pasta_destino = '''caminho para a pasta destino para os espelhos de frete tratados'''
 
 # Verifique se a pasta de destino existe, se não, crie-a
 if not os.path.exists(pasta_destino):
