@@ -40,7 +40,7 @@ def valor(arquivo): #Função para extrair o valor da nota fiscal para uma segun
     valor = float(valor.replace('.', '').replace(',', '.'))
     return valor
 
-pasta_notas = r"C:\Users\sonia\Desktop\Lucas Geral\leitor de nfs\NFS filial"
+pasta_notas = '''caminho para a sua pasta com as nota'''
 
 resultados_notas = []
 
@@ -63,10 +63,10 @@ df_notas = pd.DataFrame(resultados_notas)
 
 #print(df_notas)
 
-#df_notas.to_csv(r'C:\Users\sonia\Desktop\Lucas Geral\leitor de nfs\resultados.csv', index=False)
+df_notas.to_csv('''caminho para salvar o arquivo em csv''', index=False)
 
-pasta_espelhos = r"C:\Users\sonia\Desktop\Lucas Geral\leitor de nfs\ESPELHOS filial"
-pasta_destino = r"C:\Users\sonia\Desktop\Lucas Geral\leitor de nfs\Espelhos corrigidos"
+pasta_espelhos = '''caminho da pasta com os espelhos de frete'''
+pasta_destino = '''camino para a pasta em que os espelhos serão salvos'''
 
 # Verifique se a pasta de destino existe, se não, crie-a
 if not os.path.exists(pasta_destino):
